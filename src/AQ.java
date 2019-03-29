@@ -1,20 +1,20 @@
 public class AQ {
-    private int[] A;
-    private int[] Q;
+    private String A;
+    private String Q;
 
-    public int[] getA() {
+    public String getA() {
         return A;
     }
 
-    public void setA(int[] a) {
+    public void setA(String a) {
         A = a;
     }
 
-    public int[] getQ() {
+    public String getQ() {
         return Q;
     }
 
-    public void setQ(int[] q) {
+    public void setQ(String q) {
         Q = q;
     }
 }

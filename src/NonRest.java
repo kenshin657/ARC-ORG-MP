@@ -13,7 +13,7 @@ public class NonRest {
      private int[] A;
      private int[] Q;
 
-     private ArrayList<AQ> aqArrayList ;
+     private ArrayList<AQ> aqArrayList = new ArrayList<AQ>();
 
      public NonRest(String divisor, String dividend) {
 
@@ -61,8 +61,6 @@ public class NonRest {
          for (int i = 0; i < length; i++) {
              this.Mc[i] = Integer.parseInt(split[i]);
          }
-
-         this.aqArrayList = new ArrayList<>();
      }
 
     public int[] getM() {
@@ -136,10 +134,10 @@ public class NonRest {
         if(a[0] == 0) {
             String M = binArrayToString(this.Mc);
             String A = binArrayToString(a);
-            System.out.println(M + "\n" + A);
+            //System.out.println(M + "\n" + A);
             A = addBinaries(A, M, A.length());
 
-            System.out.println(A);
+            //System.out.println(A);
 
             this.A = binStrToArray(A);
             int size = this.Q.length;
@@ -167,16 +165,14 @@ public class NonRest {
 
         this.Q = q;
 
-        AQ aq = new AQ();
-        aq.setA(this.A);
-        aq.setQ(this.Q);
+        addToArrayList(a, q);
 
-        aqArrayList.add(aq);
 
         System.out.println("A");
         System.out.println(Arrays.toString(this.A));
         System.out.println("Q");
         System.out.println(Arrays.toString(this.Q));
+        System.out.println("\n");
     }
 
     private int[] binStrToArray(String bNum) {
@@ -227,5 +223,24 @@ public class NonRest {
         }
 
         return result;
+    }
+
+    private void addToArrayList(int[] a, int[] q) {
+        AQ aq = new AQ();
+        aq.setA(binArrayToString(this.A));
+        aq.setQ(binArrayToString(this.Q));
+        System.out.println("\n");
+
+        aqArrayList.add(aq);
+
+        /*System.out.println(aqArrayList.get(0).getA());
+        System.out.println(aqArrayList.get(0).getQ());*/
+    }
+
+    public void printArrayList() {
+        for (int i = 0; i < aqArrayList.size(); i++) {
+            System.out.println(aqArrayList.get(i).getA());
+            System.out.println(aqArrayList.get(i).getQ() + "\n");
+        }
     }
 }
