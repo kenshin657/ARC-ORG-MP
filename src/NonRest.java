@@ -57,18 +57,6 @@ public class NonRest {
          for (int i = 0; i < length; i++) {
              this.Mc[i] = Integer.parseInt(split[i]);
          }
-
-        /* split = twocomp.split("");
-         length = split.length;
-         int mclenth = this.Mc.length;
-         temp = length;
-
-         for (int i = 0; i < temp; i++) {
-             this.Mc[mclenth-1] = Integer.parseInt(split[length-1]);
-             mclenth--;
-             length--;
-         }*/
-
      }
 
     public int[] getM() {
@@ -109,5 +97,10 @@ public class NonRest {
          }
 
          return str.toString();
+    }
+
+    private int[]  compute(int[] a, int[] q) {
+
+        return null;
     }
 }
