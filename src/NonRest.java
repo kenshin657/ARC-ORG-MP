@@ -1,3 +1,5 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -10,6 +12,8 @@ public class NonRest {
      private int[] Mc; //2's complement of M
      private int[] A;
      private int[] Q;
+
+     private ArrayList<AQ> aqArrayList ;
 
      public NonRest(String divisor, String dividend) {
 
@@ -57,6 +61,8 @@ public class NonRest {
          for (int i = 0; i < length; i++) {
              this.Mc[i] = Integer.parseInt(split[i]);
          }
+
+         this.aqArrayList = new ArrayList<>();
      }
 
     public int[] getM() {
@@ -75,6 +81,9 @@ public class NonRest {
         return Q;
     }
 
+    public ArrayList<AQ> getAqArrayList() {
+        return aqArrayList;
+    }
 
     /*https://www.geeksforgeeks.org/efficient-method-2s-complement-binary-string/*/
     private String convert2sComplement(StringBuffer str) {
@@ -99,8 +108,44 @@ public class NonRest {
          return str.toString();
     }
 
-    private int[]  compute(int[] a, int[] q) {
+    public void  compute(int[] a, int[] q) {
+        //shift left code
+        int length = q.length;
+        int temp = q[0];
+        for(int i = 0; i < length-1; i++) {
+            q[i] = q[i+1];
+        }
+        System.out.println("Q:");
+        System.out.println(Arrays.toString(q));
 
-        return null;
+        length = a.length;
+
+        for (int i = 0; i < length-1; i++) {
+            a[i] = a[i+1];
+        }
+        a[length-1] = temp;
+
+        System.out.println("A: ");
+        System.out.println(Arrays.toString(a));
+
+    }
+
+    private int[] binStrToArray(String bNum) {
+        String[] split = bNum.split("");
+        int length = bNum.length();
+        int[] array = new int[length];
+
+        return array;
+    }
+
+    private String binArrayToString(int[] array) {
+        StringBuilder stringBuilder = new StringBuilder();
+        int length = array.length;
+
+        for (int i = 0; i < length; i++) {
+            stringBuilder.append(array[i]);
+        }
+
+        return stringBuilder.toString();
     }
 }
