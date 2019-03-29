@@ -7,5 +7,6 @@ public class Main {
         System.out.println(Arrays.toString(start.getQ()));
         System.out.println(Arrays.toString(start.getA()));
         System.out.println(Arrays.toString(start.getM()));
+        System.out.println(Arrays.toString(start.getMc()));
     }
 }

@@ -6,7 +6,7 @@ public class NonRest {
      private String dividend;
 
      private int[] M;
-     private int[] Mcompl;
+     private int[] Mc; //2's complement of M
      private int[] A;
      private int[] Q;
 
@@ -24,9 +24,11 @@ public class NonRest {
 
          this.A = new int[length+1];
          this.M = new int[length+1];
+         this.Mc = new int[length+1];
          for (int i = 0; i < length+1; i++) {
              this.A[i] = 0;
              this.M[i] = 0;
+             this.Mc[i] = 0;
          }
         split = divisor.split("");
          length = split.length;
@@ -38,15 +40,29 @@ public class NonRest {
              mlenght--;
              length--;
          }
+        StringBuffer stringBuffer = new StringBuffer(divisor);
+         String twocomp = convert2sComplement(stringBuffer);
 
+         split = twocomp.split("");
+         length = split.length;
+         int mclenth = this.Mc.length;
+         temp = length;
+
+         for (int i = 0; i < temp; i++) {
+             this.Mc[mclenth-1] = Integer.parseInt(split[length-1]);
+             mclenth--;
+             length--;
+         }
+
+         this.Mc[0] = this.Mc[1];
      }
 
     public int[] getM() {
         return M;
     }
 
-    public int[] getMcompl() {
-        return Mcompl;
+    public int[] getMc() {
+        return Mc;
     }
 
     public int[] getA() {
@@ -55,5 +71,29 @@ public class NonRest {
 
     public int[] getQ() {
         return Q;
+    }
+
+
+    /*https://www.geeksforgeeks.org/efficient-method-2s-complement-binary-string/*/
+    private String convert2sComplement(StringBuffer str) {
+         int length = str.length();
+         int i;
+
+         for ( i = length - 1; i >= 0; i--) {
+             if (str.charAt(i) == '1')
+                 break;
+         }
+
+         if (i == -1)
+             return "1" + str;
+
+         for (int k = i-1; k >= 0; k--) {
+             if (str.charAt(k) == '1')
+                 str.replace(k, k+1, "0");
+             else
+                 str.replace(k, k+1, "1");
+         }
+
+         return str.toString();
     }
 }
