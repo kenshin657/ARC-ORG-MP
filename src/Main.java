@@ -2,17 +2,10 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        String multiplier = "101010101";
-        String[] split = multiplier.split("");
+        NonRest start = new NonRest("1110101", "1010001");
 
-        int length = split.length;
-
-        int [] binary = new int[length];
-
-        for(int i = 0; i < length; i++) {
-            binary[i] = Integer.parseInt(split[i]);
-        }
-
-        System.out.println(Arrays.toString(binary));
+        System.out.println(Arrays.toString(start.getQ()));
+        System.out.println(Arrays.toString(start.getA()));
+        System.out.println(Arrays.toString(start.getM()));
     }
 }
