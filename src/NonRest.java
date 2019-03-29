@@ -117,8 +117,8 @@ public class NonRest {
         }
         q[length-1] = 99; // temp value only
 
-        System.out.println("Q:");
-        System.out.println(Arrays.toString(q));
+        //System.out.println("Q:");
+        //System.out.println(Arrays.toString(q));
 
         length = a.length;
 
@@ -127,8 +127,8 @@ public class NonRest {
         }
         a[length-1] = temp;
 
-        System.out.println("A: ");
-        System.out.println(Arrays.toString(a));
+        //System.out.println("A: ");
+        //System.out.println(Arrays.toString(a));
 
         //end of shift to the left code
 
@@ -137,7 +137,7 @@ public class NonRest {
             String M = binArrayToString(this.Mc);
             String A = binArrayToString(a);
             System.out.println(M + "\n" + A);
-            A = addBinaries(A, M);
+            A = addBinaries(A, M, A.length());
 
             System.out.println(A);
 
@@ -153,7 +153,7 @@ public class NonRest {
             String M = binArrayToString(this.M);
             String A = binArrayToString(a);
 
-            A = addBinaries(A, M);
+            A = addBinaries(A, M, A.length());
             this.A = binStrToArray(A);
 
             this.A = binStrToArray(A);
@@ -173,6 +173,10 @@ public class NonRest {
 
         aqArrayList.add(aq);
 
+        System.out.println("A");
+        System.out.println(Arrays.toString(this.A));
+        System.out.println("Q");
+        System.out.println(Arrays.toString(this.Q));
     }
 
     private int[] binStrToArray(String bNum) {
@@ -199,7 +203,7 @@ public class NonRest {
     }
 
     //https://www.geeksforgeeks.org/program-to-add-two-binary-strings/
-    private String addBinaries(String a, String b) {
+    private String addBinaries(String a, String b, int length) {
         String result = "";
 
         int s = 0;
@@ -216,6 +220,10 @@ public class NonRest {
             s /= 2;
 
             i--; j--;
+        }
+
+        if(result.length() > length)  {
+            result = result.substring(1);
         }
 
         return result;

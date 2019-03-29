@@ -7,16 +7,26 @@ public class Main {
         NonRest start = new NonRest("101", "10101");
 
         //for testing
+        /*
         System.out.println(Arrays.toString(start.getQ()));
         System.out.println(Arrays.toString(start.getA()));
         System.out.println(Arrays.toString(start.getM()));
         System.out.println(Arrays.toString(start.getMc()));
         start.compute(start.getA(), start.getQ());
         System.out.println(Arrays.toString(start.getA()));
-        System.out.println(Arrays.toString(start.getQ()));
+        System.out.println(Arrays.toString(start.getQ())); */
 
-        System.out.println("Laman ng AQ Array list");
-        System.out.println(Arrays.toString(start.getAqArrayList().get(0).getQ()));
-        System.out.println(Arrays.toString(start.getAqArrayList().get(0).getA()));
+        int length = start.getQ().length;
+
+        for (int i = 0; i < length; i++) {
+            start.compute(start.getA(), start.getQ());
+        }
+
+        System.out.println("Start of List");
+        /*for (int i = 0; i < start.getAqArrayList().size(); i++) {
+            System.out.println(Arrays.toString(start.getAqArrayList().get(i).getA()));
+            System.out.println(Arrays.toString(start.getAqArrayList().get(i).getQ()));
+            System.out.println("\n");
+        }*/
     }
 }
