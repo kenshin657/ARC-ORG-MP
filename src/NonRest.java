@@ -115,6 +115,8 @@ public class NonRest {
         for(int i = 0; i < length-1; i++) {
             q[i] = q[i+1];
         }
+        q[length-1] = 99; // temp value only
+
         System.out.println("Q:");
         System.out.println(Arrays.toString(q));
 
@@ -128,12 +130,59 @@ public class NonRest {
         System.out.println("A: ");
         System.out.println(Arrays.toString(a));
 
+        //end of shift to the left code
+
+        //start of A-M || A+M code
+        if(a[0] == 0) {
+            String M = binArrayToString(this.Mc);
+            String A = binArrayToString(a);
+            System.out.println(M + "\n" + A);
+            A = addBinaries(A, M);
+
+            System.out.println(A);
+
+            this.A = binStrToArray(A);
+            int size = this.Q.length;
+
+            if(this.A[0] == 0)
+                q[size-1] = 1;
+            else
+                q[size-1] = 0;
+        }
+        else {
+            String M = binArrayToString(this.M);
+            String A = binArrayToString(a);
+
+            A = addBinaries(A, M);
+            this.A = binStrToArray(A);
+
+            this.A = binStrToArray(A);
+            int size = this.Q.length;
+
+            if(this.A[0] == 0)
+                q[size-1] = 1;
+            else
+                q[size-1] = 0;
+        }
+
+        this.Q = q;
+
+        AQ aq = new AQ();
+        aq.setA(this.A);
+        aq.setQ(this.Q);
+
+        aqArrayList.add(aq);
+
     }
 
     private int[] binStrToArray(String bNum) {
         String[] split = bNum.split("");
         int length = bNum.length();
         int[] array = new int[length];
+
+        for(int i = 0; i < length; i++) {
+            array[i] = Integer.parseInt(split[i]);
+        }
 
         return array;
     }
@@ -147,5 +196,28 @@ public class NonRest {
         }
 
         return stringBuilder.toString();
+    }
+
+    //https://www.geeksforgeeks.org/program-to-add-two-binary-strings/
+    private String addBinaries(String a, String b) {
+        String result = "";
+
+        int s = 0;
+
+        int i = a.length() - 1, j = b.length() - 1;
+        while (i >= 0 || j >= 0 || s == 1)
+        {
+
+            s += ((i >= 0)? a.charAt(i) - '0': 0);
+            s += ((j >= 0)? b.charAt(j) - '0': 0);
+
+            result = (char)(s % 2 + '0') + result;
+
+            s /= 2;
+
+            i--; j--;
+        }
+
+        return result;
     }
 }
