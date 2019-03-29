@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class NonRest {
@@ -40,10 +41,24 @@ public class NonRest {
              mlenght--;
              length--;
          }
-        StringBuffer stringBuffer = new StringBuffer(divisor);
-         String twocomp = convert2sComplement(stringBuffer);
+         StringBuilder stringBuilder = new StringBuilder();
+         for(int i = 0; i < this.M.length; i++) {
+             stringBuilder.append(this.M[i]);
+         }
+
+         String twocomp = stringBuilder.toString();
+
+         StringBuffer stringBuffer = new StringBuffer(twocomp);
+         twocomp = convert2sComplement(stringBuffer);
 
          split = twocomp.split("");
+         length = split.length;
+
+         for (int i = 0; i < length; i++) {
+             this.Mc[i] = Integer.parseInt(split[i]);
+         }
+
+        /* split = twocomp.split("");
          length = split.length;
          int mclenth = this.Mc.length;
          temp = length;
@@ -52,9 +67,8 @@ public class NonRest {
              this.Mc[mclenth-1] = Integer.parseInt(split[length-1]);
              mclenth--;
              length--;
-         }
+         }*/
 
-         this.Mc[0] = this.Mc[1];
      }
 
     public int[] getM() {
