@@ -1,10 +1,11 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        NonRest start = new NonRest("10", "101");
+        NonRest start = new NonRest("101", "10101");
 
         //for testing
         /*
@@ -34,5 +35,15 @@ public class Main {
 
         //System.out.println(Arrays.toString(start.getA()));
         //System.out.println(Arrays.toString(start.getQ()));
+
+        Menu menu = new Menu();
+
+        JFrame jFrame = new JFrame("Unsigned Non-Restoring Binary Division");
+        jFrame.setContentPane(menu.getPanel1());
+        //jFrame.setSize(1000, 1000);
+        jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setVisible(true);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
